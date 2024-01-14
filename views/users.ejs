@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <link rel="stylesheet" href="/users.css">
+</head>
+
+<body>
+    <h1>Welcome to Shastra Database</h1>
+    <h2>Want to Join us today !
+          <form method="GET" action="/users/newuser">
+            <button>Join</button>
+           </form>
+    </h2>
+    <div>
+    <table>
+      <tr>
+          <th>userId</th>
+          <th>username</th>
+          <th>email</th>
+        </tr>
+           <% for(let i=0;i<users.length;i++){ %>
+            <tr>
+               <td><%=users[i]["userId"]%></td>
+               <td><%=users[i]["username"]%></td>
+               <td><%=users[i]["email"]%></td>
+               <td>
+               <form method="GET" action="/users/<%=users[i]["userId"]%>/edit">
+                <button>Edit username</button>
+               </form>
+            </td>
+            <td>
+                <form method="GET" action="/users/<%=users[i]["userId"]%>/delete">
+                 <button>Delete Account</button>
+                </form>
+             </td>
+            </tr>
+          <% } %>
+    </table>
+</div>
+ 
+</body>
+</html>
